@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 
 
 void main() {
@@ -65,7 +65,8 @@ class MyHomePage extends StatelessWidget {
                   },
                 );
               }).toList(),
-            )
+            ),
+            SvgPicture.network('https://www.svgrepo.com/show/117055/small-duck.svg'),
           ],
         ),
       ),
