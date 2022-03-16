@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-final String assetName = 'assets/images/icon_loupe.svg';
-final Widget svg = SvgPicture.asset(
-  assetName,
-  color: Colors.red,
-);
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Pages'),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -40,11 +36,41 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SvgPicture.network('http://upload.wikimedia.org/wikipedia/commons/0/02/SVG_logo.svg'),
-            svg
+            CarouselSlider(
+              options: CarouselOptions(
+                height: 400,
+                // aspectRatio: 16/9,
+                viewportFraction: 0.8,
+                initialPage: 0,
+                enableInfiniteScroll: true,
+                reverse: false,
+                autoPlay: true,
+                autoPlayInterval: Duration(seconds: 3),
+                autoPlayAnimationDuration: Duration(milliseconds: 800),
+                autoPlayCurve: Curves.fastOutSlowIn,
+                enlargeCenterPage: true,
+                scrollDirection: Axis.horizontal,
+              ),
+              items: [0,1,2,3,4,5,6,7].map((i) {
+                return Builder(
+                  builder: (BuildContext context) {
+                    return Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.symmetric(horizontal: 5.0),
+                        decoration: BoxDecoration(
+                            color: Colors.white10
+                        ),
+                        child: Image.asset('assets/images/img-${i}.jpeg')
+                    );
+                  },
+                );
+              }).toList(),
+            ),
+            SvgPicture.network('https://www.svgrepo.com/show/117055/small-duck.svg'),
           ],
         ),
       ),
     );
   }
 }
+
