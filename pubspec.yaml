@@ -47,6 +47,10 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^1.0.4
   pedantic: ^1.11.1
+  carousel_slider:
+    git:
+      url: https://github.com/serenader2014/flutter_carousel_slider
+      ref: master
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
